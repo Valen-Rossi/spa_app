@@ -1,17 +1,18 @@
+import 'package:spa_app/domain/entities/comment.dart';
 
 
 class News {
-  final int id;
+  final String id;
   final String title;
-  final String content;
-  final DateTime publishedAt;
-  final String author;
+  final String description;
+  final List<Comment> comments;
+  final String imageUrl;
 
   News({
     required this.id,
     required this.title,
-    required this.content,
-    required this.publishedAt,
-    required this.author,
+    required this.description,
+    required this.comments,
+    required this.imageUrl,
   });
 }
