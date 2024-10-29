@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spa_app/presentation/providers/news/news_providers.dart';
+import 'package:spa_app/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -40,15 +41,25 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
     final recentNews = ref.watch(recentNewsProvider);
 
-    return ListView.builder(
-      itemCount: recentNews.length,
-      itemBuilder:  (context, index) {
-        final news = recentNews[index];
-        return ListTile(
-          title: Text(news.title),
-          subtitle: Text(news.description),
-        );
-      },
+    return Column(
+      children: [
+
+        CustomAppbar(),
+
+
+        Expanded(
+          child: ListView.builder(
+            itemCount: recentNews.length,
+            itemBuilder:  (context, index) {
+              final news = recentNews[index];
+              return ListTile(
+                title: Text(news.title),
+                subtitle: Text(news.description),
+              );
+            },
+          ),
+        )
+      ],
     );
   }
 }
