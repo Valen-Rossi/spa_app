@@ -46,19 +46,8 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
         CustomAppbar(),
 
-
-        Expanded(
-          child: ListView.builder(
-            itemCount: recentNews.length,
-            itemBuilder:  (context, index) {
-              final news = recentNews[index];
-              return ListTile(
-                title: Text(news.title),
-                subtitle: Text(news.description),
-              );
-            },
-          ),
-        )
+        NewsSlideshow(recentNews: recentNews),
+        
       ],
     );
   }
