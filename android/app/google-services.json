@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "240657526544",
+    "project_id": "spa-project-46e4c",
+    "storage_bucket": "spa-project-46e4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240657526544:android:daa296cf79399e8f1c7f95",
+        "android_client_info": {
+          "package_name": "com.valentinorossi.spa_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQwE9h5TF7UWBonZMc_a92bUxIZW5IC-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240657526544:android:0f5390f3513611cf1c7f95",
+        "android_client_info": {
+          "package_name": "com.valentinorossi.spaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQwE9h5TF7UWBonZMc_a92bUxIZW5IC-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
