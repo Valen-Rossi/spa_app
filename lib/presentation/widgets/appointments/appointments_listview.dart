@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:spa_app/domain/entities/appointment.dart';
@@ -30,15 +31,17 @@ class AppointmentsListView extends StatelessWidget {
 
               // Solo mostrar turnos pendientes (futuros)
                 return Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Container(
-                      color: colors.secondaryFixed,
-                      child: ListTile(
-                        title: Text("Fecha: $formattedDate"),
-                        subtitle: Text("Horario: ${upComingAppointment.time}"),
-                        leading: const Icon(Icons.notification_important),
+                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: SlideInRight(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        color: colors.secondaryFixed,
+                        child: ListTile(
+                          title: Text("Fecha: $formattedDate"),
+                          subtitle: Text("Horario: ${upComingAppointment.time}"),
+                          leading: const Icon(Icons.notification_important),
+                        ),
                       ),
                     ),
                   ),
