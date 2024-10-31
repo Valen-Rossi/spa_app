@@ -44,9 +44,14 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     return Column(
       children: [
 
-        CustomAppbar(),
+        const CustomAppbar(),
 
         NewsSlideshow(recentNews: recentNews),
+
+        FilledButton.tonal(
+          onPressed: () {}, 
+          child: const Text("Ver Noticias")
+        )
         
       ],
     );

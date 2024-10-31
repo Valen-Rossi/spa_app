@@ -37,6 +37,8 @@ class _Slide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final textStyles = Theme.of(context).textTheme;
+
     final decoration = BoxDecoration(
       borderRadius: BorderRadius.circular(20),
       boxShadow: const [
@@ -54,17 +56,33 @@ class _Slide extends StatelessWidget {
         decoration: decoration,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Image.network(
-            news.imageUrl,
-            fit: BoxFit.fill,
-            loadingBuilder: (context, child, loadingProgress) {
-              if (loadingProgress != null) {
-                return const DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.black12) 
-                );
-              }
-              return FadeIn(child: child);
-            },
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.network(news.imageUrl, fit: BoxFit.fill,),
+              const DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.center,
+                    stops: [0.0, 0.9],
+                    colors: [
+                      Colors.black45,
+                      Colors.transparent,
+                    ]
+                  )
+                )
+              ),
+              Text(
+                news.title, 
+                textAlign: TextAlign.center, 
+                // style: textStyles.titleMedium,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
+                ),
+              )
+            ],
           ),
         ),
       ),
