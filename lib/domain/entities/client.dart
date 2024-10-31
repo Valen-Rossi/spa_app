@@ -1,24 +1,26 @@
-import 'appointment.dart';
-
 
 class Client {
-  final int id;
+  final String id;
   final String name;
   final String email;
-  final String phone;
-  final String address;
-  final String profilePath;
-  final bool isLogged;
-  final List<Appointment> appointments;
+  bool isLogged;
 
   Client({
     required this.id,
     required this.name,
     required this.email,
-    required this.phone,
-    required this.address,
-    required this.profilePath,
-    required this.isLogged,
-    required this.appointments,
+    this.isLogged=false,
   });
+
+  factory Client.fromJson(Map<String, dynamic> json) => Client(
+    email: json['email'] ?? '',
+    name: json['nombreCompleto'] ?? '',
+    id: json['uid'] ?? '',
+  );
+
+  Map<String, dynamic> toJson() => {
+    'uid': id,
+    'email': email,
+    'nombreCompleto': name,
+  };
 }

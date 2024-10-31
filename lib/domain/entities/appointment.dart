@@ -1,21 +1,25 @@
-
+import 'entities.dart';
 
 class Appointment {
-  final int id;
-  final int clientId;
-  final int staffId;
-  final int serviceId;
-  final DateTime appointmentDate;
-  final String status; // "pending", "confirmed", "cancelled"
-  final String? comments; // Comentarios adicionales opcionales
+  final String id;
+  final Client client;
+  final double totalCost;
+  final String status;
+  final DateTime date;
+  final DateTime paymentDate;
+  final String time;
+  final String paymentMethod;
+  final List<Service> services;
 
   Appointment({
     required this.id,
-    required this.clientId,
-    required this.staffId,
-    required this.serviceId,
-    required this.appointmentDate,
+    required this.client,
+    required this.totalCost,
     required this.status,
-    this.comments,
+    required this.date,
+    required this.paymentDate,
+    required this.time,
+    required this.paymentMethod,
+    required this.services,
   });
 }

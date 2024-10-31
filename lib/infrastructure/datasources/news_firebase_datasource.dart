@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:spa_app/domain/datasources/news_datasource.dart';
 import 'package:spa_app/domain/entities/news.dart';
-import 'package:spa_app/infrastructure/models/firebase/news_firebase.dart';
-import 'package:spa_app/infrastructure/mappers/news_mapper.dart'; // Importa el mapper
+import 'package:spa_app/infrastructure/mappers/news_mapper.dart';
+import 'package:spa_app/infrastructure/models/firebase/news_firebase.dart'; // Importa el mapper
 
 class NewsFirebaseDatasource extends INewsDatasource {
   final FirebaseFirestore db = FirebaseFirestore.instance;

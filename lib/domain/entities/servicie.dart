@@ -1,22 +1,31 @@
-import 'appointment.dart';
+import 'entities.dart';
 
 
 class Service {
-  final int id;
+  final bool isSelected;
   final String name;
-  final String description;
-  final int duration; // En minutos
   final double price;
-  final String category;
-  final List<Appointment> appointments;
+  final Professional professional;
 
   Service({
-    required this.id,
+    required this.isSelected,
     required this.name,
-    required this.description,
-    required this.duration,
     required this.price,
-    required this.category,
-    required this.appointments,
+    required this.professional,
   });
+
+  factory Service.fromJson(Map<String, dynamic> json) => Service(
+    isSelected: json['isSelected'] ?? false,
+    name: json['nombre'] ?? '',
+    price: double.parse(json['precio'].toString() ?? "0"),
+    professional: Professional.fromJson(json['profesional']),
+  );
+
+  Map<String, dynamic> toJson() => {
+    'isSelected': isSelected,
+    'nombre': name,
+    'precio': price,
+    'profesional': professional.toJson(),
+  };
+
 }

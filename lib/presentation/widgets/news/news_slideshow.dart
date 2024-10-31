@@ -14,6 +14,9 @@ class NewsSlideshow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final colors = Theme.of(context).colorScheme;
+
     return SizedBox(
       height: 210,
       width: double.infinity,
@@ -21,6 +24,13 @@ class NewsSlideshow extends StatelessWidget {
         viewportFraction: 0.8,
         scale: 0.9,
         autoplay: true,
+        pagination: SwiperPagination(
+          margin: const EdgeInsets.only(top: 0),
+          builder: DotSwiperPaginationBuilder(
+            activeColor: colors.primary,
+            color: colors.secondary,
+          ),
+        ),
         itemCount: recentNews.length,
         itemBuilder: (context, index) => _Slide(news: recentNews[index]),
       ),
@@ -56,33 +66,35 @@ class _Slide extends StatelessWidget {
         decoration: decoration,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              Image.network(news.imageUrl, fit: BoxFit.fill,),
-              const DecoratedBox(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.center,
-                    stops: [0.0, 0.9],
-                    colors: [
-                      Colors.black45,
-                      Colors.transparent,
-                    ]
+          child: FadeIn(
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Image.network(news.imageUrl, fit: BoxFit.fill,),
+                const DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.center,
+                      stops: [0.0, 0.9],
+                      colors: [
+                        Colors.black45,
+                        Colors.transparent,
+                      ]
+                    )
                   )
-                )
-              ),
-              Text(
-                news.title, 
-                textAlign: TextAlign.center, 
-                // style: textStyles.titleMedium,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
                 ),
-              )
-            ],
+                Text(
+                  news.title, 
+                  textAlign: TextAlign.center, 
+                  // style: textStyles.titleMedium,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
