@@ -76,10 +76,6 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
         NewsSlideshow(recentNews: recentNews),
 
-        FilledButton.tonal(
-          onPressed: () {},
-          child: const Text("Ver Noticias"),
-        ),
       ],
     );
   }

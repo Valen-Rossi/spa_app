@@ -13,6 +13,9 @@ class AppointmentsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final colors = Theme.of(context).colorScheme;
+
     return SizedBox(
           height: upComingAppointments.isEmpty ?50 :200,
           child: upComingAppointments.isEmpty
@@ -26,8 +29,19 @@ class AppointmentsListView extends StatelessWidget {
               final formattedDate = DateFormat('dd/MM/yyyy').format(upComingAppointment.date);
 
               // Solo mostrar turnos pendientes (futuros)
-                return ListTile(
-                  title: Text("Fecha: $formattedDate"),
+                return Padding(
+                  padding: const EdgeInsets.all(5),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Container(
+                      color: colors.secondaryFixed,
+                      child: ListTile(
+                        title: Text("Fecha: $formattedDate"),
+                        subtitle: Text("Horario: ${upComingAppointment.time}"),
+                        leading: const Icon(Icons.notification_important),
+                      ),
+                    ),
+                  ),
                 );
               
             },
