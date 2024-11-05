@@ -28,6 +28,6 @@ class AppointmentsNotifier extends StateNotifier<List<Appointment>>{
 
     final List<Appointment> appointments = await getAppointments("8IA5p6gmdhVGeDVGmLj4I6IeNz33");
 
-    state = [...state, ...appointments];
+    state = [...appointments];
   }
 }

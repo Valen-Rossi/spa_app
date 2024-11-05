@@ -1,32 +1,49 @@
 import 'package:go_router/go_router.dart';
 
 import 'package:spa_app/presentation/screens/screens.dart';
+import 'package:spa_app/presentation/views/views.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
 
-    GoRoute(
-      path: '/',
-      name: HomeScreen.name,
-      builder: (context, state) => const HomeScreen(),
-      routes: [
+    ShellRoute(
+      builder: (context, state, child) {
+
+        return HomeScreen(childView: child);
+        
+      },
+      routes:[
 
         GoRoute(
-          path: 'news/:id',
-          name: NewsScreen.name,
+          path: '/',
           builder: (context, state) {
+            return const HomeView();
+          }, 
+          routes: [
 
-            final newsId = state.pathParameters['id'] ?? 'no-id';
+            GoRoute(
+              path: 'news/:id',
+              name: NewsScreen.name,
+              builder: (context, state) {
 
-            return NewsScreen(newsId: newsId);
-          }
+                final newsId = state.pathParameters['id'] ?? 'no-id';
+
+                return NewsScreen(newsId: newsId);
+              }
+            )
+
+          ]
+        ),
+        
+        GoRoute(
+          path: '/appointments',
+          builder: (context, state) {
+            return const AppointmentsView();
+          }, 
         ),
 
       ]
-    ),
-
-    
-
+    )
   ]
 );

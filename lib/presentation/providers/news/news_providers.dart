@@ -7,9 +7,7 @@ final recentNewsProvider = StateNotifierProvider<NewsNotifier, List<News>>((ref)
   
   final fetchMoreNews= ref.watch(newsRepositoryProvider).getRecentNews;
 
-  return NewsNotifier(
-    fetchMoreNews: fetchMoreNews
-    );
+  return NewsNotifier(fetchMoreNews: fetchMoreNews);
 });
 
 typedef NewsCallBack = Future<List<News>> Function({int page});
@@ -17,6 +15,7 @@ typedef NewsCallBack = Future<List<News>> Function({int page});
 class NewsNotifier extends StateNotifier<List<News>>{
 
   int currentPage= 0;
+  bool isLoading= false;
   NewsCallBack fetchMoreNews;
 
   NewsNotifier({
@@ -24,10 +23,16 @@ class NewsNotifier extends StateNotifier<List<News>>{
   }): super([]);
 
   Future<void> loadNextPage() async{
+    if (isLoading) return;
+
+    isLoading= true;
+
     currentPage++;
 
     final List<News> news = await fetchMoreNews(page: currentPage);
 
-    state = [...state, ...news];
+    state = [...news];
+
+    isLoading= false;
   }
 }

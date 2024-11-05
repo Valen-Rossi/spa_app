@@ -68,7 +68,7 @@ class _NewsDetails extends StatelessWidget {
       children: [
 
         Padding(
-          padding: EdgeInsets.all(7),
+          padding: const EdgeInsets.all(7),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
