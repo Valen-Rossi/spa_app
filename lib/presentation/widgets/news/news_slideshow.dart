@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spa_app/domain/entities/news.dart';
 
 class NewsSlideshow extends StatelessWidget {
@@ -67,33 +68,40 @@ class _Slide extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: FadeIn(
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Image.network(news.imageUrl, fit: BoxFit.fill,),
-                const DecoratedBox(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.center,
-                      stops: [0.0, 0.9],
-                      colors: [
-                        Colors.black45,
-                        Colors.transparent,
-                      ]
+            child: GestureDetector(
+              onTap: () => context.push('/news/${news.id}'),
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                
+                  Image.network(news.imageUrl, fit: BoxFit.fill,),
+                  
+                  const DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.center,
+                        stops: [0.3, 1.0],
+                        colors: [
+                          Colors.black54,
+                          Colors.transparent,
+                        ]
+                      )
                     )
-                  )
-                ),
-                Text(
-                  news.title, 
-                  textAlign: TextAlign.center, 
-                  // style: textStyles.titleMedium,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold
                   ),
-                )
-              ],
+                  
+                  Text(
+                    news.title, 
+                    textAlign: TextAlign.center, 
+                    // style: textStyles.titleMedium,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold
+                    ),
+                  )
+                
+                ],
+              ),
             ),
           ),
         ),
