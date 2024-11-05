@@ -24,13 +24,13 @@ class NewsScreenState extends ConsumerState<NewsScreen> {
   void initState() {
     super.initState();
 
-    ref.read(recentNewsProvider.notifier).loadNextPage();
+    ref.read(recentNewsProvider.notifier);
   }
 
   @override
   Widget build(BuildContext context) {
 
-    final news = ref.watch(recentNewsProvider).lastWhere((element) => element.id==widget.newsId);
+    final news = ref.watch(recentNewsProvider).singleWhere((element) => element.id==widget.newsId);
 
     return Scaffold(
       body: CustomScrollView(
