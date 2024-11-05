@@ -25,6 +25,7 @@ final appRouter = GoRouter(
             GoRoute(
               path: 'news/:id',
               name: NewsScreen.name,
+
               builder: (context, state) {
 
                 final newsId = state.pathParameters['id'] ?? 'no-id';
@@ -41,6 +42,17 @@ final appRouter = GoRouter(
           builder: (context, state) {
             return const AppointmentsView();
           }, 
+          routes: [
+
+            GoRoute(
+              path: '/new-appointment' ,
+              name: NewAppointmentScreen.name,
+              builder: (context, state) {
+                return const NewAppointmentScreen();
+              },
+            )
+
+          ]
         ),
 
       ]

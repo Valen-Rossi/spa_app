@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spa_app/domain/entities/appointment.dart';
 import 'package:spa_app/presentation/providers/providers.dart';
 import 'package:spa_app/presentation/widgets/widgets.dart';
@@ -40,31 +41,38 @@ class AppointmentsViewState extends ConsumerState<AppointmentsView> {
       }
     });
     
-    return Column(
-      children: [
-        const CustomAppbar(),
-
-        Container(
-          width: double.infinity,
-          margin: const EdgeInsets.all(10),
-          child: Text("Turnos Pendientes",textAlign: TextAlign.start, style: textStyles.titleMedium,),
-        ),
-
-        AppointmentsListView(upComingAppointments: upComingAppointments),
-
-        const Divider(
-          height: 50,
-        ),
-
-        Container(
-          width: double.infinity,
-          margin: const EdgeInsets.only(left: 10, bottom: 20),
-          child: Text("Historial de Turnos",textAlign: TextAlign.start, style: textStyles.titleMedium,),
-        ),
-
-        AppointmentsListView(upComingAppointments: previousAppointments),
-
-      ],
+    return Scaffold(
+      body: Column(
+        children: [
+          const CustomAppbar(),
+      
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.all(10),
+            child: Text("Turnos Pendientes",textAlign: TextAlign.start, style: textStyles.titleMedium,),
+          ),
+      
+          AppointmentsListView(upComingAppointments: upComingAppointments),
+      
+          const Divider(
+            height: 50,
+          ),
+      
+          Container(
+            width: double.infinity,
+            margin: const EdgeInsets.only(left: 10, bottom: 20),
+            child: Text("Historial de Turnos",textAlign: TextAlign.start, style: textStyles.titleMedium,),
+          ),
+      
+          AppointmentsListView(upComingAppointments: previousAppointments),
+      
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        onPressed: () => context.push('/appointments/new-appointment'),
+        child: const Icon(Icons.add), 
+      ),
     );
   }
 }

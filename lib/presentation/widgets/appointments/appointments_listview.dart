@@ -32,15 +32,17 @@ class AppointmentsListView extends StatelessWidget {
               // Solo mostrar turnos pendientes (futuros)
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: SlideInRight(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Container(
-                        color: colors.secondaryFixed,
-                        child: ListTile(
-                          title: Text("Fecha: $formattedDate"),
-                          subtitle: Text("Horario: ${upComingAppointment.time}"),
-                          leading: const Icon(Icons.notification_important),
+                  child: FadeIn(
+                    child: SlideInRight(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Container(
+                          color: colors.secondaryFixed,
+                          child: ListTile(
+                            title: Text("Fecha: $formattedDate"),
+                            subtitle: Text("Horario: ${upComingAppointment.time}"),
+                            leading: const Icon(Icons.notification_important),
+                          ),
                         ),
                       ),
                     ),
