@@ -22,7 +22,7 @@ class NewsFromFirebase {
     comments: json["comentarios"] != null
         ? List<Comment>.from(json["comentarios"].map((x) => Comment.fromJson(x)))
         : [],
-    imageUrl: json["imageUrl"] ?? '',
+    imageUrl: json["imageUrl"] ?? 'https://linnea.com.ar/wp-content/uploads/2018/09/404PosterNotFound.jpg',
   );
 
   Map<String, dynamic> toJson() => {

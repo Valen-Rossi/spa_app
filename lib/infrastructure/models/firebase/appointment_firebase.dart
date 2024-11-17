@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:spa_app/infrastructure/models/firebase/service_firebase.dart';
 import '../../../domain/entities/entities.dart';
 
 class AppointmentFromFirebase {
@@ -39,7 +40,7 @@ class AppointmentFromFirebase {
       time: json['horario'] ?? '',
       paymentMethod: json['metodoPago'] ?? '',
       services: json['services'] != null
-          ? List<Service>.from(json['services'].map((x) => Service.fromJson(x)))
+          ? List<Service>.from(json['services'].map((x) => Servicetoenti.fromJson(x)))
           : [],
     );
   }

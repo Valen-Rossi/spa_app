@@ -1,4 +1,3 @@
-
 import 'package:spa_app/domain/datasources/appointments_datasource.dart';
 import 'package:spa_app/domain/entities/entities.dart';
 import 'package:spa_app/domain/repositories/appointments_repository.dart';
