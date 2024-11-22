@@ -19,7 +19,7 @@ class ServicesFirebaseDatasource extends IServicesDatasource {
     final List<Service> services = queryServices.docs.map((doc) {
       
       // Mapea cada documento a ServicesFromFirebase
-      final serviceFromFirebase = ServiceFromFirebase.fromJson(doc.data() as Map<String, dynamic>);
+      final serviceFromFirebase = ServiceFromFirebase.fromJson(doc.id,doc.data() as Map<String, dynamic>);
 
       // Utiliza el mapper para convertir ServicesFromFirebase a Services
       return ServiceMapper.serviceFirebaseToEntity(serviceFromFirebase);

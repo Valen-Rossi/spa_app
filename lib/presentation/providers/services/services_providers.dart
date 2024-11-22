@@ -27,4 +27,15 @@ class ServicesNotifier extends StateNotifier<List<Service>>{
 
     state = [...services];
   }
+
+  void updateServiceSelection(String serviceId, bool isSelected) {
+    state = [
+      for (final service in state)
+        if (service.id == serviceId)
+          service.copyWith(isSelected: isSelected)
+        else
+          service,
+    ];
+  }
+
 }

@@ -15,8 +15,8 @@ class ServiceFromFirebase {
     required this.professional,
   });
 
- factory ServiceFromFirebase.fromJson(Map<String, dynamic> json) => ServiceFromFirebase(
-    id: json['Document ID']?? '',
+ factory ServiceFromFirebase.fromJson(String id, Map<String, dynamic> json) => ServiceFromFirebase(
+    id: id,
     isSelected: json['isSelected'] ?? false,
     name: json['nombre'] ?? '',
     price: double.parse(json['precio'].toString() ?? "0"),
